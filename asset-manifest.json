@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mizunagashi-kun/static/css/main.eca2eb58.chunk.css",
+    "main.js": "/mizunagashi-kun/static/js/main.ac1433cb.chunk.js",
+    "main.js.map": "/mizunagashi-kun/static/js/main.ac1433cb.chunk.js.map",
+    "runtime-main.js": "/mizunagashi-kun/static/js/runtime-main.828b75f3.js",
+    "runtime-main.js.map": "/mizunagashi-kun/static/js/runtime-main.828b75f3.js.map",
+    "static/js/2.141c888c.chunk.js": "/mizunagashi-kun/static/js/2.141c888c.chunk.js",
+    "static/js/2.141c888c.chunk.js.map": "/mizunagashi-kun/static/js/2.141c888c.chunk.js.map",
+    "static/js/3.17e773c4.chunk.js": "/mizunagashi-kun/static/js/3.17e773c4.chunk.js",
+    "static/js/3.17e773c4.chunk.js.map": "/mizunagashi-kun/static/js/3.17e773c4.chunk.js.map",
+    "index.html": "/mizunagashi-kun/index.html",
+    "static/css/main.eca2eb58.chunk.css.map": "/mizunagashi-kun/static/css/main.eca2eb58.chunk.css.map",
+    "static/js/2.141c888c.chunk.js.LICENSE.txt": "/mizunagashi-kun/static/js/2.141c888c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.828b75f3.js",
+    "static/js/2.141c888c.chunk.js",
+    "static/css/main.eca2eb58.chunk.css",
+    "static/js/main.ac1433cb.chunk.js"
+  ]
+}

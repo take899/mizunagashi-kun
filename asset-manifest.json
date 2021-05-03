@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mizunagashi-kun/static/css/main.d7dcdda6.chunk.css",
-    "main.js": "/mizunagashi-kun/static/js/main.528de773.chunk.js",
-    "main.js.map": "/mizunagashi-kun/static/js/main.528de773.chunk.js.map",
+    "main.js": "/mizunagashi-kun/static/js/main.87618a1c.chunk.js",
+    "main.js.map": "/mizunagashi-kun/static/js/main.87618a1c.chunk.js.map",
     "runtime-main.js": "/mizunagashi-kun/static/js/runtime-main.ca7dcb00.js",
     "runtime-main.js.map": "/mizunagashi-kun/static/js/runtime-main.ca7dcb00.js.map",
     "static/js/2.52494239.chunk.js": "/mizunagashi-kun/static/js/2.52494239.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ca7dcb00.js",
     "static/js/2.52494239.chunk.js",
     "static/css/main.d7dcdda6.chunk.css",
-    "static/js/main.528de773.chunk.js"
+    "static/js/main.87618a1c.chunk.js"
   ]
 }

@@ -102,10 +102,10 @@ function App() {
             writeMode={writeMode}
             setWriteMode={setWriteMode}
           />
-          <button
+          <div
             className="__paper"
             onClick={() => writeMode ? setWriteMode(false) : setWriteMode(true)}
-          ></button>
+          ></div>
           <div className="__paper-top"></div>
           <div className="__paper-bottom"></div>
           <div className="__paper-roll"></div>

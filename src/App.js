@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './App.css';
 
-const Draw = ({ show, children, ...callBack }) => (
+const OpenPaper = ({ show, children, paperRef }) => (
   <CSSTransition
     in={show}
     timeout={300}
@@ -14,76 +14,98 @@ const Draw = ({ show, children, ...callBack }) => (
       exitActive: '',
       exitDone: '',
     }}
-    {...callBack}
   >
-    <div className="__paper-draw">
+    <div className="__paper" ref={paperRef}>
       {children}
     </div>
   </CSSTransition>
 );
-const Editor = ({ show, children, ...callBack }) => (
+const Editor = ({ show, children }) => (
   <CSSTransition
     in={show}
     timeout={0}
     unmountOnExit
-    classNames={''}
-    {...callBack}
-  >
-    <div className="editor">
-      {children}
-    </div>
-  </CSSTransition>
-);
-
-const Stretch = ({ show, children, ...callBack }) => (
-  <CSSTransition
-    in={show}
-    timeout={200}
-    unmountOnExit
-    classNames={{
-      enterActive: '__strech',
-      enterDone: '__strech',
-    }}
-    {...callBack}
+    classNames={'editor'}
   >
     <div>
       {children}
     </div>
   </CSSTransition>
-)
+);
+const Flush = ({ show, children }) => (
+  <CSSTransition
+    in={show}
+    timeout={200}
+    unmountOnExit
+    classNames={{
+      enter: '',
+      enterActive: '__active',
+      enterDone: '__active',
+      exit: '__exit',
+      exitActive: '__exit',
+      exitDone: '__exit',
+    }}
+  >
+    <div className="__flushing-paper">
+      {children}
+    </div> 
+  </CSSTransition>
+);
 
-const WriteMenu = ({ writeMode, setWriteMode }) => {
+const WriteMenu = ({ isWritable, setIsWritable }) => {
   const [textContent, setTextContent] = useState('');
-  const [stretch, setStrech] = useState(false);
+  const [startFlush, setStartFlush] = useState(false);
+  const paperRef = useRef(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let content = e.target.content.value;
-    setTextContent(content);
-    setStrech(true);
-    console.log(content);
+    if (content) {
+      setTextContent(content);
+      window.setTimeout(() => {
+        paperRef.current.classList.add('__extend')
+      }, 200);
+      window.setTimeout(() => {
+        setStartFlush(true);
+        resetPaper();
+      }, 600);
+      window.setTimeout(() => {
+        setStartFlush(false);
+      }, 3000);
+    }
   };
 
+  const resetPaper = () => {
+    paperRef.current.classList.remove('__extend');
+    setIsWritable(false);
+  }
+
   return (
-    <Draw show={writeMode}>
-      <Editor show={writeMode}>
-        <React.Fragment>
-          <button onClick={() => setWriteMode(false)} className="absolute text-3xl right-1 -top-2">×</button>
-          <form onSubmit={handleSubmit}>
-            <div className="p-2.5">
-              <textarea type="text" name="content" placeholder="嫌な事は流しましょう" rows="5" className="w-full px-4 py-2 ml-2 bg-white" />
-            </div>
-            <div className="text-center mt-14">
-              <input type="submit" value="水に流す" className="px-6 py-1 font-bold bg-green-100 rounded-full" />
-            </div>
-          </form>
-        </React.Fragment>
-      </Editor>
-    </Draw>
+    <React.Fragment>
+      <OpenPaper show={isWritable} paperRef={paperRef}>
+        <Editor show={isWritable}>
+          <React.Fragment>
+            <button onClick={() => resetPaper()} className="absolute text-3xl right-1 -top-2">×</button>
+            <form onSubmit={handleSubmit}>
+              <div className="p-2.5">
+                <textarea type="text" name="content" placeholder="嫌な事は流しましょう" rows="6" className="w-full px-4 py-2 ml-2 bg-white" />
+              </div>
+              <div className="text-center">
+                <input type="submit" value="水に流す" className="px-6 py-1 font-bold bg-green-100 rounded-full" />
+              </div>
+            </form>
+          </React.Fragment>
+        </Editor>
+      </OpenPaper>
+      <Flush show={startFlush}>
+        {textContent}
+      </Flush>
+    </React.Fragment>
   )
 };
 
 function App() {
-  const [writeMode, setWriteMode] = useState(false);
+  const [isWritable, setIsWritable] = useState(false);
 
   return (
     <React.Fragment>
@@ -97,18 +119,18 @@ function App() {
           {/* <div className="bg-white __benza"></div> */}
         </div>
         <div className="relative h-3/5">
-          <div className="__dai"></div>
+          <div className="__desk"></div>
           <WriteMenu
-            writeMode={writeMode}
-            setWriteMode={setWriteMode}
+            isWritable={isWritable}
+            setIsWritable={setIsWritable}
           />
           <div
-            className="__paper"
-            onClick={() => writeMode ? setWriteMode(false) : setWriteMode(true)}
+            className="__roll"
+            onClick={() => isWritable ? setIsWritable(false) : setIsWritable(true)}
           ></div>
-          <div className="__paper-top"></div>
-          <div className="__paper-bottom"></div>
-          <div className="__paper-roll"></div>
+          <div className="__roll-top"></div>
+          <div className="__roll-bottom"></div>
+          <div className="__roll-core"></div>
         </div>
       </div>
     </React.Fragment>

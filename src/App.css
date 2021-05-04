@@ -43,7 +43,7 @@
   box-shadow: 0px 0px 30px 2px #2a87ca inset;
 }
 
-.__dai {
+.__desk {
   position: absolute;
   width: 100%;
   height: calc(100% - 20px);
@@ -51,7 +51,7 @@
   background-color: rgb(233, 216, 197);
   box-shadow: 0px 0px 100px 0px rgb(167, 145, 120) inset, 0px 0px 40px -10px #464646;
 }
-.__paper {
+.__roll {
   position: relative;
   width: 40%;
   height: 60%;
@@ -61,7 +61,36 @@
   background-color: white;
   box-shadow: 5px 5px 10px -10px #4b4b4b;
 }
-.__paper-draw {
+.__roll-top {
+  position: absolute;
+  width: 40%;
+  height: 10%;
+  top: 5%;
+  left: -5%;
+  background-color: white;
+  border-radius: 50%;
+}
+.__roll-bottom {
+  position: relative;
+  width: 40%;
+  height: 10%;
+  top: 5%;
+  left: -5%;
+  background-color: rgb(192, 192, 192);
+  border-radius: 50%;
+  box-shadow: 20px 20px 30px -10px #4b4b4b;
+}
+.__roll-core {
+  position: relative;
+  width: 13%;
+  height: 3%;
+  top: -0.6%;
+  left: 8.5%;
+  background: linear-gradient(120deg, rgb(48, 38, 38), rgb(255, 255, 255));
+  border: solid 1px rgb(153, 153, 153);
+  border-radius: 50%;
+}
+.__paper {
   position: absolute;
   width: 25%;
   height: 60%;
@@ -72,39 +101,32 @@
   box-shadow: 0px 0px 10px -2px #4b4b4b;
   transition: all .3s ease;
 }
-.__paper-draw.__active {
+.__paper.__active {
   width: 75%;
   padding-left: 10%;
 }
-.__paper-draw.__strech {
-  transform: translateX(20%);
+.__paper.__extend {
+  width: 150%;
+  padding-left: 85%;
 }
-.__paper-top {
+
+.__flushing-paper {
   position: absolute;
-  width: 40%;
-  height: 10%;
-  top: 5%;
-  left: -5%;
+  width: 55%;
+  height: 60%;
+  max-height: 230px;
+  top: 15%;
+  left: 115%;
   background-color: white;
-  border-radius: 50%;
+  box-shadow: 0px 0px 10px -2px #4b4b4b;
+  transition: all .3s ease;
 }
-.__paper-bottom {
-  position: relative;
-  width: 40%;
-  height: 10%;
-  top: 5%;
-  left: -5%;
-  background-color: rgb(192, 192, 192);
-  border-radius: 50%;
-  box-shadow: 20px 20px 30px -10px #4b4b4b;
+.__flushing-paper.__active {
+  top: -60%;
+  left: 22.5%;
 }
-.__paper-roll {
-  position: relative;
-  width: 13%;
-  height: 3%;
-  top: -0.6%;
-  left: 8.5%;
-  background: linear-gradient(120deg, rgb(48, 38, 38), rgb(255, 255, 255));
-  border: solid 1px rgb(153, 153, 153);
-  border-radius: 50%;
+.__flushing-paper.__exit {
+  top: -60%;
+  left: 22.5%;
+  opacity: 0;
 }

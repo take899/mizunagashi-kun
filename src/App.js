@@ -6,14 +6,7 @@ const OpenPaper = ({ show, children, paperRef }) => (
   <CSSTransition
     in={show}
     timeout={300}
-    classNames={{
-      enter: '',
-      enterActive: '__active',
-      enterDone: '__active',
-      exit: '',
-      exitActive: '',
-      exitDone: '',
-    }}
+    classNames={'__paper'}
   >
     <div className="__paper" ref={paperRef}>
       {children}
@@ -25,7 +18,7 @@ const Editor = ({ show, children }) => (
     in={show}
     timeout={0}
     unmountOnExit
-    classNames={'editor'}
+    classNames={''}
   >
     <div>
       {children}
@@ -35,20 +28,13 @@ const Editor = ({ show, children }) => (
 const Flush = ({ show, children }) => (
   <CSSTransition
     in={show}
-    timeout={200}
+    timeout={3000}
     unmountOnExit
-    classNames={{
-      enter: '',
-      enterActive: '__active',
-      enterDone: '__active',
-      exit: '__exit',
-      exitActive: '__exit',
-      exitDone: '__exit',
-    }}
+    classNames={'__flush'}
   >
-    <div className="__flushing-paper">
+    <div className="__flush">
       {children}
-    </div> 
+    </div>
   </CSSTransition>
 );
 
@@ -63,7 +49,7 @@ const WriteMenu = ({ isWritable, setIsWritable }) => {
     if (content) {
       setTextContent(content);
       window.setTimeout(() => {
-        paperRef.current.classList.add('__extend')
+        paperRef.current.classList.add('__paper-extend')
       }, 200);
       window.setTimeout(() => {
         setStartFlush(true);
@@ -76,7 +62,7 @@ const WriteMenu = ({ isWritable, setIsWritable }) => {
   };
 
   const resetPaper = () => {
-    paperRef.current.classList.remove('__extend');
+    paperRef.current.classList.remove('__paper-extend');
     setIsWritable(false);
   }
 
@@ -98,7 +84,9 @@ const WriteMenu = ({ isWritable, setIsWritable }) => {
         </Editor>
       </OpenPaper>
       <Flush show={startFlush}>
-        {textContent}
+        <div className="p-4 text-lg font-semibold">
+          {textContent}
+        </div>
       </Flush>
     </React.Fragment>
   )

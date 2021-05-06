@@ -101,16 +101,16 @@
   box-shadow: 0px 0px 10px -2px #4b4b4b;
   transition: all .3s ease;
 }
-.__paper.__active {
+.__paper-enter-active, .__paper-enter-done {
   width: 75%;
   padding-left: 10%;
 }
-.__paper.__extend {
+.__paper-extend {
   width: 150%;
   padding-left: 85%;
 }
 
-.__flushing-paper {
+.__flush {
   position: absolute;
   width: 55%;
   height: 60%;
@@ -119,14 +119,29 @@
   left: 115%;
   background-color: white;
   box-shadow: 0px 0px 10px -2px #4b4b4b;
-  transition: all .3s ease;
 }
-.__flushing-paper.__active {
+.__flush-enter-active {
+  top: -60%;
+  left: 22.5%;
+  transition: all .5s ease;
+}
+.__flush-enter-done {
   top: -60%;
   left: 22.5%;
 }
-.__flushing-paper.__exit {
-  top: -60%;
+@keyframes rotation {
+  0% {
+    opacity: 1;
+    top: -60%;
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    top: -90%;
+    transform: rotate(360deg) scale(0);
+  }
+}
+.__flush-exit {
   left: 22.5%;
-  opacity: 0;
+  animation: rotation 3s linear;
 }
